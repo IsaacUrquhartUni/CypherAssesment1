@@ -1,7 +1,14 @@
 #include<stdio.h>
 
-int main() 
+int main(void) 
 {
+    void rotationEncryption();
+    char option;
+    
+    option = 'a'; //Add scanf() before finishing project.
+    //----------------------------------------------------------------------------------------
+    //Menu printed to screen: 
+   
     printf("############################################################\n");
     printf("# Please select an option from the menu below:             #\n");
     printf("#                                                          #\n");
@@ -9,6 +16,29 @@ int main()
     printf("# (c) Substitution encryption  (d) Substitution decryption #\n");
     printf("#                                                          #\n");
     printf("############################################################\n");
+
+    //----------------------------------------------------------------------------------------
+    
+    //scanf() to go here for menu selection
+        
+    //----------------------------------------------------------------------------------------
+    /*Runs the corresponding program based on the user input, and also returns an error message
+      if the user inputs an invalid option.                                                    */ 
+    switch (option)
+    {
+        case 97:
+            rotationEncryption();
+            break;
+        
+        default: 
+            printf("ERROR: Enter a valid menu option");
+            break;
+    }
+    
+    //----------------------------------------------------------------------------------------
+    
+    
+    
     
     return 0;
 }
