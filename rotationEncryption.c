@@ -1,6 +1,8 @@
 #include <stdio.h>
 
-int main(void)
+void rotationEncryption(void)
 {
-    printf("hello, world\n");
+    
+    
+    
 }
