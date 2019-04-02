@@ -24,6 +24,7 @@ int main(void)
     //----------------------------------------------------------------------------------------
     /*Runs the corresponding program based on the user input, and also returns an error message
       if the user inputs an invalid option.                                                    */ 
+    
     switch (option)
     {
         case 97:
@@ -37,10 +38,38 @@ int main(void)
     
     //----------------------------------------------------------------------------------------
     
-    
-    
-    
     return 0;
+}
+
+void rotationEncryption()
+{
+    char text[50];
+    char tempTxt;
+    
+    printf("Please enter some text to be encoded (Max 100 characters):\n");
+    scanf("%c", &tempTxt);
+    for (int index = 0; index < 50; index++)
+    {
+        if (tempTxt >= 65 && tempTxt <= 90)
+        {
+            text[index] = tempTxt;
+        }else if (tempTxt >= 97 && <= 122)
+        {
+            tempText -= 32;
+            text[index] = tempTxt;
+        }else if (tempText == 13)
+        {
+            for (index; index < 50; index++
+            {
+                text[index] = 0;
+            }
+            index = 50;
+        }else 
+        {
+            text[index] = tempTxt;
+        }
+    }
+    
 }
 
 
