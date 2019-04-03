@@ -50,7 +50,7 @@ void rotationEncryption()
     {
             scanf("%c", text[index]);
     }
-
+   
     for (int index = 0; index < 50; index++)
     {
             printf("%c", text[index]);
