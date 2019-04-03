@@ -43,18 +43,44 @@ int main(void)
 
 void rotationEncryption()
 {
-    char text[50];
+    char text[51];
+    int key;
+    int count = 0;
     
     printf("Please enter some text to be encoded (Max 50 characters):\n");
-    for (int index = 0; index < 50; index++)
+    gets(text);
+    printf("\nEnter the key for encryption (Must be between 0 and 25):\n");
+    
+    scanf(" %i", &key);
+    
+    do
     {
-            scanf("%c", text[index]);
-    }
-   
-    for (int index = 0; index < 50; index++)
-    {
-            printf("%c", text[index]);
-    }
+        if (text[count] >= 65 && text[count] <= 90-key)
+        {
+            text[count] += key;
+        }
+        else if (text[count] >= 97 && text[count] <= 122-key)
+        {
+            text[count] += key-32;
+        }
+        else if (text[count] > 90-key && text[count] <= 90)
+        {
+            text[count] += key-26;
+        }
+        else if (text[count] > 122-key && text[count] <= 122)
+        {
+            text[count] += key-32-26;
+        }
+        else
+        {
+            text[count] = text[count];
+        }
+        
+        count++;
+    } while (text[count] != 0);
+    
+    printf("Encoded text is: %s\n", text);
+    
 }
 
 
