@@ -6,7 +6,7 @@ int main(void)
     void rotationDecryption();
     char option;
     
-    option = 'a'; //Add scanf() before finishing project.
+    option = 'b'; //Add scanf() before finishing project.
     //----------------------------------------------------------------------------------------
     //Menu printed to screen: 
    
@@ -31,6 +31,10 @@ int main(void)
         case 97:
             rotationEncryption();
             break;
+            
+        case 98:
+            rotationDecryption();
+            break;
         
         default: 
             printf("ERROR: Enter a valid menu option");
@@ -47,13 +51,12 @@ int main(void)
 void rotationEncryption()
 {
     char text[51];
-    int key;
+    int key = 0;
     int count = 0;
     
     printf("Please enter some text to be encoded (Max 50 characters):\n");
     gets(text);
     printf("\nEnter the key for encryption (Must be between 0 and 25):\n");
-    
     scanf(" %i", &key);
     
     do
@@ -91,10 +94,41 @@ void rotationEncryption()
 void rotationDecryption()
 {
     char eText[51]; //Encrypted text
-    char dText[51]; //Decrypted text
-    int key;
+    int key = 0;
     int count = 0;
-    printf("Please enter encrypted text to be encoded:\n");
+    
+    printf("Please enter encrypted text to be decoded:\n");
+    gets(eText);
+    printf("Enter the decryption key:\n");
+    scanf(" %i", &key);
+    
+    do
+    {
+        if (eText[count] >= 65+key && eText[count] <= 90)
+        {
+            eText[count] -= key;    
+        }
+        else if (eText[count] >= 97+key && eText[count] <= 122)
+        {
+            eText[count] += -key-32;
+        }
+        else if (eText[count] < 65+key && eText[count] >= 65)
+        {
+            eText[count] += -key+26;
+        }
+        else if (eText[count] >= 97 && eText[count] < 97+key)
+        {
+            eText[count] += -key+26-32;
+        }
+        else
+        {
+            eText[count] = eText[count];
+        }
+        
+        count++;
+    } while (eText[count] != 0);
+    
+    printf("Decrypted text is: %s\n", eText);
 }
 
 
