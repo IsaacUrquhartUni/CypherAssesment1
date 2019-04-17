@@ -3,6 +3,7 @@
 int main(void) 
 {
     void rotationEncryption();
+    void rotationDecryption();
     char option;
     
     option = 'a'; //Add scanf() before finishing project.
@@ -40,6 +41,8 @@ int main(void)
     
     return 0;
 }
+
+//---------------------------------------------------------------------------------------------
 
 void rotationEncryption()
 {
@@ -83,6 +86,15 @@ void rotationEncryption()
     
 }
 
+//----------------------------------------------------------------------------------------------------
 
+void rotationDecryption()
+{
+    char eText[51]; //Encrypted text
+    char dText[51]; //Decrypted text
+    int key;
+    int count = 0;
+    printf("Please enter encrypted text to be encoded:\n");
+}
 
 
