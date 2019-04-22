@@ -24,6 +24,7 @@ void menu()
     void rotationEncryption();
     void rotationDecryption();
     void substitutionEncryption();
+    void substitutionDecryption();
     char option = ' ';
     //Menu printed to screen: 
    
@@ -53,6 +54,10 @@ void menu()
         
         case 99:
             substitutionEncryption();
+            break;
+        
+        case 100:
+            substitutionDecryption();
             break;
         
         default: 
@@ -157,7 +162,7 @@ void substitutionEncryption()
     scanf(" %[^\n]%*c", text);
     
     //Plain Text: ABCDEFGHIJKLMNOPQRSTUVWXYZ
-    //Encrypted:  PTIOXZMQAWLRVUYSEGJFHBPNKC
+    //Encrypted:  DTIOXZMQAWLRVUYSEGJFHBPNKC
     
     do
     {
@@ -168,7 +173,7 @@ void substitutionEncryption()
         switch (text[count])
         {
             case 65:
-                text[count] = 'P';
+                text[count] = 'D';
                 break;
             
             case 66:
@@ -268,6 +273,141 @@ void substitutionEncryption()
                 
             case 90:
                 text[count] = 'C';
+                break;
+                
+            default:
+                text[count] = text[count];
+                break;
+        }
+        count++;
+    } while (text[count] != 0);
+    
+    printf("Encoded text is: %s\n", text);
+}
+
+//---------------------------------------------------------------------------------------------------------------
+
+void substitutionDecryption()
+{
+    char text[51]; //Encrypted text
+    int count = 0;
+    
+    printf("Please enter encrypted text to be decrypted:\n");
+    scanf(" %[^\n]%*c", text);
+    
+    //Plain Text: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+    //Encrypted:  DTIOXZMQAWLRVUYSEGJFHBPNKC
+    
+    do
+    {
+        if (text[count] >= 97 && text[count] <= 122)
+        {
+            text[count] -= 32;
+        }
+        switch (text[count])
+        {
+            case 65:
+                text[count] = 'I';
+                break;
+            
+            case 66:
+                text[count] = 'V';
+                break;
+                
+            case 67:
+                text[count] = 'Z';
+                break;
+            
+            case 68:
+                text[count] = 'A';
+                break;
+            
+            case 69:
+                text[count] = 'Q';
+                break;
+            
+            case 70:
+                text[count] = 'T';
+                break;
+                
+            case 71:
+                text[count] = 'R';
+                break;
+                
+            case 72:
+                text[count] = 'U';
+                break;
+                
+            case 73:
+                text[count] = 'C';
+                break;
+                
+            case 74:
+                text[count] = 'S';
+                break;
+                
+            case 75:
+                text[count] = 'Y';
+                break;
+                
+            case 76:
+                text[count] = 'K';
+                break;
+                
+            case 77:
+                text[count] = 'G';
+                break;
+                
+            case 78:
+                text[count] = 'X';
+                break;
+                
+            case 79:
+                text[count] = 'D';
+                break;
+                
+            case 80:
+                text[count] = 'W';
+                break;
+                
+            case 81:
+                text[count] = 'H';
+                break;
+                
+            case 82:
+                text[count] = 'L';
+                break;
+                
+            case 83:
+                text[count] = 'P';
+                break;
+                
+            case 84:
+                text[count] = 'B';
+                break;
+                
+            case 85:
+                text[count] = 'N';
+                break;
+                
+            case 86:
+                text[count] = 'M';
+                break;
+                
+            case 87:
+                text[count] = 'J';
+                break;
+                
+            case 88:
+                text[count] = 'E';
+                break;
+                
+            case 89:
+                text[count] = 'O';
+                break;
+                
+            case 90:
+                text[count] = 'F';
                 break;
                 
             default:
