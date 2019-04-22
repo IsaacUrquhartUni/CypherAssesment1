@@ -23,6 +23,7 @@ void menu()
 {
     void rotationEncryption();
     void rotationDecryption();
+    void substitutionEncryption();
     char option = ' ';
     //Menu printed to screen: 
    
@@ -48,6 +49,10 @@ void menu()
             
         case 98:
             rotationDecryption();
+            break;
+        
+        case 99:
+            substitutionEncryption();
             break;
         
         default: 
@@ -141,6 +146,41 @@ void rotationDecryption()
     printf("Decrypted text is: %s\n", eText);
 }
 
+//--------------------------------------------------------------------------------------------------------------
 
+void substitutionEncryption()
+{
+    char text[51]; //Encrypted text
+    int key = 0;
+    int count = 0;
+    
+    printf("Please enter text to be encrypted:\n");
+    scanf(" %[^\n]%*c", text);
+    
+    //Plain Text: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+    //Encrypted:  PTIOXZMQAWLRVUYSEGJFHBPNKC
+    
+    do
+    {
+        if (text[count] >= 97 && text[count] <= 122)
+        {
+            text[count] -= 32;
+        }
+        switch (text[count])
+        {
+            case 65:
+                text[count] = 'P';
+                break;
+            
+            case 66:
+                text[count] = 'T';
+                break;
+            
+        }
+        count++;
+    } while (text[count] != 0);
+    
+    printf("%s", text);
+}
 
 
