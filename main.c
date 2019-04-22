@@ -151,7 +151,6 @@ void rotationDecryption()
 void substitutionEncryption()
 {
     char text[51]; //Encrypted text
-    int key = 0;
     int count = 0;
     
     printf("Please enter text to be encrypted:\n");
@@ -175,12 +174,110 @@ void substitutionEncryption()
             case 66:
                 text[count] = 'T';
                 break;
+            case 67:
+                text[count] = 'I';
+                break;
             
+            case 68:
+                text[count] = 'O';
+                break;
+            
+            case 69:
+                text[count] = 'X';
+                break;
+            
+            case 70:
+                text[count] = 'Z';
+                break;
+                
+            case 71:
+                text[count] = 'M';
+                break;
+                
+            case 72:
+                text[count] = 'Q';
+                break;
+                
+            case 73:
+                text[count] = 'A';
+                break;
+                
+            case 74:
+                text[count] = 'W';
+                break;
+                
+            case 75:
+                text[count] = 'L';
+                break;
+                
+            case 76:
+                text[count] = 'R';
+                break;
+                
+            case 77:
+                text[count] = 'V';
+                break;
+                
+            case 78:
+                text[count] = 'U';
+                break;
+                
+            case 79:
+                text[count] = 'Y';
+                break;
+                
+            case 80:
+                text[count] = 'S';
+                break;
+                
+            case 81:
+                text[count] = 'E';
+                break;
+                
+            case 82:
+                text[count] = 'G';
+                break;
+                
+            case 83:
+                text[count] = 'J';
+                break;
+                
+            case 84:
+                text[count] = 'F';
+                break;
+                
+            case 85:
+                text[count] = 'H';
+                break;
+                
+            case 86:
+                text[count] = 'B';
+                break;
+                
+            case 87:
+                text[count] = 'P';
+                break;
+                
+            case 88:
+                text[count] = 'N';
+                break;
+                
+            case 89:
+                text[count] = 'K';
+                break;
+                
+            case 90:
+                text[count] = 'C';
+                break;
+                
+            default:
+                text[count] = text[count];
+                break;
         }
         count++;
     } while (text[count] != 0);
     
-    printf("%s", text);
+    printf("Encoded text is: %s\n", text);
 }
 
 
