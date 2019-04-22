@@ -7,12 +7,7 @@ int main(void)
     int exit;
     
     
-    do 
-    {
-        menu();
-        printf("\nExit? (1) Yes (2) No\n");
-        scanf(" %i", &exit);
-    } while (exit != 1);
+    menu();
        
     return 0;
 }
@@ -23,7 +18,7 @@ void menu()
 {
     void rotationEncryption();
     void rotationDecryption();
-    char option;
+    char option = ' ';
     //Menu printed to screen: 
    
     printf("############################################################\n");
@@ -34,7 +29,8 @@ void menu()
     printf("#                                                          #\n");
     printf("############################################################\n");
     
-    gets(&option);
+    scanf(" %c", &option);
+    
     
     /*Runs the corresponding program based on the user input, and also returns an error message
       if the user inputs an invalid option.                                                    */ 
@@ -47,9 +43,6 @@ void menu()
             
         case 98:
             rotationDecryption();
-            break;
-            
-        case 101:
             break;
         
         default: 
@@ -67,7 +60,7 @@ void rotationEncryption()
     int count = 0;
     
     printf("Please enter some text to be encoded (Max 50 characters):\n");
-    gets(text);
+    scanf(" %[^\n]%*c", text);
     printf("\nEnter the key for encryption (Must be between 0 and 25):\n");
     scanf("\n %i", &key);
     
@@ -110,7 +103,7 @@ void rotationDecryption()
     int count = 0;
     
     printf("Please enter encrypted text to be decoded:\n");
-    gets(eText);
+    scanf(" %[^\n]%*c", eText);
     printf("Enter the decryption key:\n");
     scanf(" %i", &key);
     
@@ -142,5 +135,7 @@ void rotationDecryption()
     
     printf("Decrypted text is: %s\n", eText);
 }
+
+
 
 
