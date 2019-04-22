@@ -20,7 +20,7 @@ int main(void)
 
     //----------------------------------------------------------------------------------------
     
-    //scanf() to go here for menu selection
+    scanf(" %c", &option);
         
     //----------------------------------------------------------------------------------------
     /*Runs the corresponding program based on the user input, and also returns an error message
