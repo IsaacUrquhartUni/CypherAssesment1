@@ -2,12 +2,28 @@
 
 int main(void) 
 {
+    
+    void menu();
+    int exit;
+    
+    
+    do 
+    {
+        menu();
+        printf("\nExit? (1) Yes (2) No\n");
+        scanf(" %i", &exit);
+    } while (exit != 1);
+       
+    return 0;
+}
+
+//---------------------------------------------------------------------------------------------
+
+void menu()
+{
     void rotationEncryption();
     void rotationDecryption();
     char option;
-    
-    option = 'b'; //Add scanf() before finishing project.
-    //----------------------------------------------------------------------------------------
     //Menu printed to screen: 
    
     printf("############################################################\n");
@@ -17,12 +33,9 @@ int main(void)
     printf("# (c) Substitution encryption  (d) Substitution decryption #\n");
     printf("#                                                          #\n");
     printf("############################################################\n");
-
-    //----------------------------------------------------------------------------------------
     
-    scanf(" %c", &option);
-        
-    //----------------------------------------------------------------------------------------
+    gets(&option);
+    
     /*Runs the corresponding program based on the user input, and also returns an error message
       if the user inputs an invalid option.                                                    */ 
     
@@ -35,15 +48,14 @@ int main(void)
         case 98:
             rotationDecryption();
             break;
+            
+        case 101:
+            break;
         
         default: 
             printf("ERROR: Enter a valid menu option");
             break;
     }
-    
-    //----------------------------------------------------------------------------------------
-    
-    return 0;
 }
 
 //---------------------------------------------------------------------------------------------
@@ -57,7 +69,7 @@ void rotationEncryption()
     printf("Please enter some text to be encoded (Max 50 characters):\n");
     gets(text);
     printf("\nEnter the key for encryption (Must be between 0 and 25):\n");
-    scanf(" %i", &key);
+    scanf("\n %i", &key);
     
     do
     {
