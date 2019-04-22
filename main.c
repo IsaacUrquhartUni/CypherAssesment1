@@ -7,7 +7,12 @@ int main(void)
     int exit;
     
     
-    menu();
+    do 
+    {
+        menu();
+        printf("\nExit? (1) Yes (2) No\n");
+        scanf(" %i", &exit);
+    } while (exit != 1);
        
     return 0;
 }
