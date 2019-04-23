@@ -3,10 +3,11 @@
 int main(void) 
 {
     
-    void menu();
-    int exit;
+    void menu(); //Calls the menu function
+    int exit;    //Variable for the option to exit the program
     
-    
+    /* This loop will run the program once, then at the end ask the user if they would like to exit.
+     * If the user enters 1, the loop breaks and the program ends, otherwise it will start over again. */
     do 
     {
         menu();
@@ -19,15 +20,15 @@ int main(void)
 
 //---------------------------------------------------------------------------------------------
 
-void menu()
+void menu(void)
 {
-    void rotationEncryption();
-    void rotationDecryption();
-    void substitutionEncryption();
-    void substitutionDecryption();
-    char option = ' ';
+    void rotationEncryption();      //Declares rotationEncryption function.
+    void rotationDecryption();      //Declares rotationDecryption function.
+    void substitutionEncryption();  //Declares substitutionEncryption function.
+    void substitutionDecryption();  //Declares substitutionDecryption function.
+    char option = ' ';              //Sets / resets the variable option to a blank space (or 32 in ASCII).
+
     //Menu printed to screen: 
-   
     printf("############################################################\n");
     printf("# Please select an option from the menu below:             #\n");
     printf("#                                                          #\n");
@@ -36,11 +37,11 @@ void menu()
     printf("#                                                          #\n");
     printf("############################################################\n");
     
-    scanf(" %c", &option);
+    scanf(" %c", &option); //Reads users input and assigns the variable to 'option'.
     
     
-    /*Runs the corresponding program based on the user input, and also returns an error message
-      if the user inputs an invalid option.                                                    */ 
+    /* Runs the corresponding program based on the user input, and also returns an error message
+     * if the user inputs an invalid option. */ 
     
     switch (option)
     {
@@ -68,44 +69,67 @@ void menu()
 
 //---------------------------------------------------------------------------------------------
 
+/* Once this function is called it will ask the user for a text input, and after the user presses the enter key
+ * it will then ask for a key. The key will shift the value of each character up the desired amount until all
+ * the text is encrypted. */
+
 void rotationEncryption()
 {
-    char text[51];
-    int key = 0;
-    int count = 0;
+    char text[51];  //An array to store the line of text, has a max length of 51 characters.
+    int key = 0;    /* This variable is used to input the users desired amount of shifting the letters 
+                     * should undergo. */
+    int count = 0;  //A variable to act as a counter for how many times the loop has been completed.
     
     printf("Please enter some text to be encoded (Max 50 characters):\n");
-    scanf(" %[^\n]%*c", text);
+    scanf(" %[^\n]%*c", text); /* The %[^\n] will ensure the input is read until right before a new line 
+                                * is encountered, then the %*c will read the new line character then discard
+                                * it afterward. */
     printf("\nEnter the key for encryption (Must be between 0 and 25):\n");
-    scanf("\n %i", &key);
+    scanf("\n %i", &key); //Inputs a single integer as the key and stores it in the 'key' variable.
     
+    /* Runs a loop adding the key to the value of the current text[count], and ensures the result will always
+     * be within (including) 65 and 90 in the ASCII table. */
     do
     {
-        if (text[count] >= 65 && text[count] <= 90-key)
+        //If the original letter is between 'A' and 'Z' minus the key, it will simply have its value added.
+        if (text[count] >= 65 && text[count] <= 90-key) 
         {
             text[count] += key;
         }
+        
+        /* If the original letter is between 'a' and 'z' minus the key, it will subtract 32 to reach the 
+         * capital version of the letter then perform the addition of the key. */
         else if (text[count] >= 97 && text[count] <= 122-key)
         {
             text[count] += key-32;
         }
+        
+        /* If the original letter is between 'Z' minus the key and 'Z', the program will subract 26 to start
+         * counting from the start of the capital alphabet, then add the key to the value of the char.*/
         else if (text[count] > 90-key && text[count] <= 90)
         {
             text[count] += key-26;
         }
+        
+        /* If the original letter is between 'z' minus the key and 'z',the program will subtract 32 to bring
+         * the value back to the capital letters, then the program will subract 26 to start
+         * counting from the start of the capital alphabet, then add the key to the value of the char.*/
         else if (text[count] > 122-key && text[count] <= 122)
         {
             text[count] += key-32-26;
         }
+        
+        //If the original character is not a letter, it will not shift the value.
         else
         {
             text[count] = text[count];
         }
         
-        count++;
-    } while (text[count] != 0);
+        count++; //Increases the counter before ending the loop.
+    } while (text[count] != 0); /* While the line has not finished with a null value 'char 0', the loop will
+                                 * keep running. */
     
-    printf("Encoded text is: %s\n", text);
+    printf("Encoded text is: %s\n", text); //Prints encoded text.
     
 }
 
@@ -113,42 +137,62 @@ void rotationEncryption()
 
 void rotationDecryption()
 {
-    char eText[51]; //Encrypted text
-    int key = 0;
-    int count = 0;
+    char eText[51]; //Encrypted text array with a max length of 51 characters
+    int key = 0;    /* This variable is used to input the users desired amount of shifting the letters 
+                     * should undergo. */
+    int count = 0;  //A variable to act as a counter for how many times the loop has been completed.
     
     printf("Please enter encrypted text to be decoded:\n");
-    scanf(" %[^\n]%*c", eText);
+    scanf(" %[^\n]%*c", eText);     /* The %[^\n] will ensure the input is read until right before a new line 
+                                     * is encountered, then the %*c will read the new line character then discard
+                                     * it afterward. */
     printf("Enter the decryption key:\n");
-    scanf(" %i", &key);
+    scanf(" %i", &key); //Inputs a single integer as the key and stores it in the 'key' variable.
     
+    /* Runs a loop subtracting the key from the value of the current text[count], and ensures the result will always
+     * be within (including) 65 and 90 in the ASCII table. */
     do
     {
+        /* If the original letter is between 'A' + the key and 'Z', the program will simply subract the key 
+         * from the current eText[count]. */
         if (eText[count] >= 65+key && eText[count] <= 90)
         {
             eText[count] -= key;    
         }
+        
+        /* If the encrypted letter is between 'a' + the key and 'z', the program will subtract 32 from the char
+         * value to bring it baack to the capital letters, then subtract the value of the key. */
         else if (eText[count] >= 97+key && eText[count] <= 122)
         {
             eText[count] += -key-32;
         }
+        
+        /* If the encrypted letter is between 'A' + the key and 'A', the program will add 26 to bring the value to the 
+         * end of of teh capital alphabet, then subtract the key. */
         else if (eText[count] < 65+key && eText[count] >= 65)
         {
             eText[count] += -key+26;
         }
+        
+        /* If the encrypted letter is between 'a' and 'a' + the key, the program will -32 from the value to bring
+         * the value back to the capital letters, it will then add 26 to bring the value to the end of the capital
+         * alphabet, then it will subtract the key. */
         else if (eText[count] >= 97 && eText[count] < 97+key)
         {
             eText[count] += -key+26-32;
         }
+        
+        //If the character is not a letter, it will not change its value.
         else
         {
             eText[count] = eText[count];
         }
         
-        count++;
-    } while (eText[count] != 0);
+        count++; //Increases the count before the loop ends.
+    } while (eText[count] != 0); /* While the line has not finished with a null value 'char 0', the loop will
+                                  * keep running. */
     
-    printf("Decrypted text is: %s\n", eText);
+    printf("Decrypted text is: %s\n", eText); //Prints the decrypted text.
 }
 
 //--------------------------------------------------------------------------------------------------------------
@@ -159,7 +203,9 @@ void substitutionEncryption()
     int count = 0;
     
     printf("Please enter text to be encrypted:\n");
-    scanf(" %[^\n]%*c", text);
+    scanf(" %[^\n]%*c", text); /*The %[^\n] will ensure the input is read until right before a new line 
+                                * is encountered, then the %*c will read the new line character then discard
+                                * it afterward. */
     
     //Plain Text: ABCDEFGHIJKLMNOPQRSTUVWXYZ
     //Encrypted:  DTIOXZMQAWLRVUYSEGJFHBPNKC
@@ -293,7 +339,9 @@ void substitutionDecryption()
     int count = 0;
     
     printf("Please enter encrypted text to be decrypted:\n");
-    scanf(" %[^\n]%*c", text);
+    scanf(" %[^\n]%*c", text); /*The %[^\n] will ensure the input is read until right before a new line 
+                                * is encountered, then the %*c will read the new line character then discard
+                                * it afterward. */
     
     //Plain Text: ABCDEFGHIJKLMNOPQRSTUVWXYZ
     //Encrypted:  DTIOXZMQAWLRVUYSEGJFHBPNKC
