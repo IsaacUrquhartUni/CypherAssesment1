@@ -199,17 +199,20 @@ void rotationDecryption()
 
 void substitutionEncryption()
 {
-    char text[51]; //Encrypted text
-    int count = 0;
+    char text[51]; //Encrypted text array with a max length of 51 characters.
+    int count = 0; //Counter variable for how many times 
     
     printf("Please enter text to be encrypted:\n");
-    scanf(" %[^\n]%*c", text); /*The %[^\n] will ensure the input is read until right before a new line 
+    scanf(" %[^\n]%*c", text); /* The %[^\n] will ensure the input is read until right before a new line 
                                 * is encountered, then the %*c will read the new line character then discard
                                 * it afterward. */
     
     //Plain Text: ABCDEFGHIJKLMNOPQRSTUVWXYZ
     //Encrypted:  DTIOXZMQAWLRVUYSEGJFHBPNKC
     
+    /* This loop will make sure all characters are capital letters, otherwise it will convert them by subtracting
+     * 32. Then it will run through and convert each letter to the coresponding substitution as outlined in the
+     * comment above. */
     do
     {
         if (text[count] >= 97 && text[count] <= 122)
@@ -325,10 +328,11 @@ void substitutionEncryption()
                 text[count] = text[count];
                 break;
         }
-        count++;
-    } while (text[count] != 0);
+        count++; //Increases the counter before the loop ends.
+    } while (text[count] != 0); /* While the line has not finished with a null value 'char 0', the loop will
+                                 * keep running. */
     
-    printf("Encoded text is: %s\n", text);
+    printf("Encoded text is: %s\n", text); //Prints encrypted text.
 }
 
 //---------------------------------------------------------------------------------------------------------------
