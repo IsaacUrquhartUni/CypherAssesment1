@@ -75,7 +75,7 @@ void menu(void)
 
 void rotationEncryption()
 {
-    char text[51];  //An array to store the line of text, has a max length of 51 characters.
+    char text[2000];  //An array to store the line of text, has a max length of 2000 characters.
     int key = 0;    /* This variable is used to input the users desired amount of shifting the letters 
                      * should undergo. */
     int count = 0;  //A variable to act as a counter for how many times the loop has been completed.
@@ -137,7 +137,7 @@ void rotationEncryption()
 
 void rotationDecryption()
 {
-    char eText[51]; //Encrypted text array with a max length of 51 characters
+    char eText[2000]; //Encrypted text array with a max length of 2000 characters
     int key = 0;    /* This variable is used to input the users desired amount of shifting the letters 
                      * should undergo. */
     int count = 0;  //A variable to act as a counter for how many times the loop has been completed.
@@ -199,7 +199,7 @@ void rotationDecryption()
 
 void substitutionEncryption()
 {
-    char text[51]; //Encrypted text array with a max length of 51 characters.
+    char text[2000]; //Encrypted text array with a max length of 2000 characters.
     int count = 0; //Counter variable for how many times 
     
     printf("Please enter text to be encrypted:\n");
@@ -339,7 +339,7 @@ void substitutionEncryption()
 
 void substitutionDecryption()
 {
-    char text[51]; //Encrypted text
+    char text[2000]; //Encrypted text
     int count = 0; //Counter variable for how many times
     
     printf("Please enter encrypted text to be decrypted:\n");
