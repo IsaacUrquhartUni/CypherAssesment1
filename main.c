@@ -529,10 +529,30 @@ void unknownRotateDecrypt()
                 }
             }  
         } 
-        //The following searches for the keywords "a" or "i".
-        else if (text[count1-1] == 32 && text[count1+1] == 32)
+        //The following searches for the keyword "to".
+        else if ((text[count1-1] == 32 && text[count1+2] == 32) && ((text[count1] - text[count1+1] == 5) ||
+                 (text[count1] + 26 - text[count1+1] == 5)))
         {
-            
+            if (text[count1] >= 65 && text[count1] <= 90)
+            {
+                if (text[count1] - 84 < 0)
+                {
+                    key = text[count1] - 84 +26;
+                }else
+                {
+                    key = text[count1] - 84;
+                }
+            }else 
+            {
+                text[count1] -= 32;
+                if (text[count1] - 84 < 0)
+                {
+                    key = text[count1] - 84 +26;
+                }else
+                {
+                    key = text[count1] - 84;
+                }
+            }
         }
         
         
