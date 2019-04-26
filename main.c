@@ -26,6 +26,7 @@ void menu(void)
     void rotationDecryption();      //Declares rotationDecryption function.
     void substitutionEncryption();  //Declares substitutionEncryption function.
     void substitutionDecryption();  //Declares substitutionDecryption function.
+    void unknownRotateDecrypt();    //Declares unknownRotateDecrypt function.
     char option = ' ';              //Sets / resets the variable option to a blank space (or 32 in ASCII).
 
     //Menu printed to screen: 
@@ -34,6 +35,8 @@ void menu(void)
     printf("#                                                          #\n");
     printf("# (a) Rotation encryption      (b) Rotation decryption     #\n");
     printf("# (c) Substitution encryption  (d) Substitution decryption #\n");
+    printf("# (e) Unknown rotation decryption                          #\n");
+    printf("# (f) Unknown substitution decryption                      #\n");
     printf("#                                                          #\n");
     printf("############################################################\n");
     
@@ -61,6 +64,11 @@ void menu(void)
             substitutionDecryption();
             break;
         
+        case 101:
+            unknownRotateDecrypt();
+            break;
+            
+        
         default: 
             printf("ERROR: Enter a valid menu option");
             break;
@@ -80,7 +88,7 @@ void rotationEncryption()
                      * should undergo. */
     int count = 0;  //A variable to act as a counter for how many times the loop has been completed.
     
-    printf("Please enter some text to be encoded (Max 50 characters):\n");
+    printf("Please enter some text to be encoded:\n");
     scanf(" %[^\n]%*c", text); /* The %[^\n] will ensure the input is read until right before a new line 
                                 * is encountered, then the %*c will read the new line character then discard
                                 * it afterward. */
@@ -476,4 +484,161 @@ void substitutionDecryption()
     printf("Encoded text is: %s\n", text); //Prints decrypted text.
 }
 
+//------------------------------------------------------------------------------------------------------------
 
+void unknownRotateDecrypt()
+{
+    char text[2000];  //An array to store the line of text, has a max length of 2000 characters.
+    int key = 0;    /* This variable is used to input the users desired amount of shifting the letters 
+                     * should undergo. */
+    int count = 0;  //A variable to act as a counter for how many times the loop has been completed.
+    int count1 = 1;  /* A variable to act as a counter for how many times the loop has been completed.
+                      * Starting at 1 to start the loop on the second character. */
+    
+    printf("Please enter some text to be decoded:\n");
+    scanf(" %[^\n]%*c", text); /* The %[^\n] will ensure the input is read until right before a new line 
+                                * is encountered, then the %*c will read the new line character then discard
+                                * it afterward. */
+    
+    do
+    {
+        if (text[count1-1] - text[count1] == 12 && text[count1] - text[count1+1] == 3)
+        {
+            if (text[count1] >= 65 && text[count1] <= 90)
+            {
+                if (text[count1] - 72 < 0)
+                {
+                    key = text[count1] -72 + 26;
+                }else 
+                {
+                    key = text[count1] - 72; 
+                }
+            }else
+            {
+                text[count1] -= 32;
+                if (text[count1] - 72 < 0)
+                {
+                    key = text[count1] -72 + 26;
+                }else 
+                {
+                    key = text[count1] - 72; 
+                }
+            }  
+        } else if (text[count1-1] - text[count1] + 26 == 12 && text[count1] - text[count1+1] + 26 == 3)
+        {
+            if (text[count1] >= 65 && text[count1] <= 90)
+            {
+                if (text[count1] - 72 < 0)
+                {
+                    key = text[count1] -72 + 26;
+                }else 
+                {
+                    key = text[count1] - 72; 
+                }
+            }else
+            {
+                text[count1] -= 32;
+                if (text[count1] - 72 < 0)
+                {
+                    key = text[count1] -72 + 26;
+                }else 
+                {
+                    key = text[count1] - 72; 
+                }
+            }
+        }else if (text[count1-1] - text[count1] + 26 == 12 && text[count1] - text[count1+1] == 3)
+        {
+            if (text[count1] >= 65 && text[count1] <= 90)
+            {
+                if (text[count1] - 72 < 0)
+                {
+                    key = text[count1] -72 + 26;
+                }else 
+                {
+                    key = text[count1] - 72; 
+                }
+            }else
+            {
+                text[count1] -= 32;
+                if (text[count1] - 72 < 0)
+                {
+                    key = text[count1] -72 + 26;
+                }else 
+                {
+                    key = text[count1] - 72; 
+                }
+            }
+        }else if (text[count1-1] - text[count1] == 12 && text[count1] - text[count1+1] + 26 == 3)
+        {
+            if (text[count1] >= 65 && text[count1] <= 90)
+            {
+                if (text[count1] - 72 < 0)
+                {
+                    key = text[count1] -72 + 26;
+                }else 
+                {
+                    key = text[count1] - 72; 
+                }
+            }else
+            {
+                text[count1] -= 32;
+                if (text[count1] - 72 < 0)
+                {
+                    key = text[count1] -72 + 26;
+                }else 
+                {
+                    key = text[count1] - 72; 
+                }
+            }
+        }
+        
+        
+        count1++;
+    } while (count1 < 2000);
+    printf("\n%i\n", key);
+    
+    /* Runs a loop subtracting the key from the value of the current text[count], and ensures the result will always
+     * be within (including) 65 and 90 in the ASCII table. */
+    do
+    {
+        /* If the original letter is between 'A' + the key and 'Z', the program will simply subract the key 
+         * from the current eText[count]. */
+        if (text[count] >= 65+key && text[count] <= 90)
+        {
+            text[count] -= key;    
+        }
+        
+        /* If the encrypted letter is between 'a' + the key and 'z', the program will subtract 32 from the char
+         * value to bring it baack to the capital letters, then subtract the value of the key. */
+        else if (text[count] >= 97+key && text[count] <= 122)
+        {
+            text[count] += -key-32;
+        }
+        
+        /* If the encrypted letter is between 'A' + the key and 'A', the program will add 26 to bring the value to the 
+         * end of of teh capital alphabet, then subtract the key. */
+        else if (text[count] < 65+key && text[count] >= 65)
+        {
+            text[count] += -key+26;
+        }
+        
+        /* If the encrypted letter is between 'a' and 'a' + the key, the program will -32 from the value to bring
+         * the value back to the capital letters, it will then add 26 to bring the value to the end of the capital
+         * alphabet, then it will subtract the key. */
+        else if (text[count] >= 97 && text[count] < 97+key)
+        {
+            text[count] += -key+26-32;
+        }
+        
+        //If the character is not a letter, it will not change its value.
+        else
+        {
+            text[count] = text[count];
+        }
+        
+        count++; //Increases the count before the loop ends.
+    } while (text[count] != 0); /* While the line has not finished with a null value 'char 0', the loop will
+                                  * keep running. */
+    
+    printf("Decrypted text is: %s\n", text); //Prints the decrypted text.
+}
