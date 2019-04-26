@@ -502,7 +502,11 @@ void unknownRotateDecrypt()
     
     do
     {
-        if (text[count1-1] - text[count1] == 12 && text[count1] - text[count1+1] == 3)
+        //The following searches for the keyword "the".
+        if ((text[count1-1] - text[count1] == 12 && text[count1] - text[count1+1] == 3) ||
+            (text[count1-1] - text[count1] == 12 && text[count1] - text[count1+1] + 26 == 3) ||
+            (text[count1-1] - text[count1] + 26 == 12 && text[count1] - text[count1+1] == 3) ||
+            (text[count1-1] - text[count1] + 26 == 12 && text[count1] - text[count1+1] + 26 == 3))
         {
             if (text[count1] >= 65 && text[count1] <= 90)
             {
@@ -524,78 +528,17 @@ void unknownRotateDecrypt()
                     key = text[count1] - 72; 
                 }
             }  
-        } else if (text[count1-1] - text[count1] + 26 == 12 && text[count1] - text[count1+1] + 26 == 3)
+        } 
+        //The following searches for the keywords "a" or "i".
+        else if (text[count1-1] == 32 && text[count1+1] == 32)
         {
-            if (text[count1] >= 65 && text[count1] <= 90)
-            {
-                if (text[count1] - 72 < 0)
-                {
-                    key = text[count1] -72 + 26;
-                }else 
-                {
-                    key = text[count1] - 72; 
-                }
-            }else
-            {
-                text[count1] -= 32;
-                if (text[count1] - 72 < 0)
-                {
-                    key = text[count1] -72 + 26;
-                }else 
-                {
-                    key = text[count1] - 72; 
-                }
-            }
-        }else if (text[count1-1] - text[count1] + 26 == 12 && text[count1] - text[count1+1] == 3)
-        {
-            if (text[count1] >= 65 && text[count1] <= 90)
-            {
-                if (text[count1] - 72 < 0)
-                {
-                    key = text[count1] -72 + 26;
-                }else 
-                {
-                    key = text[count1] - 72; 
-                }
-            }else
-            {
-                text[count1] -= 32;
-                if (text[count1] - 72 < 0)
-                {
-                    key = text[count1] -72 + 26;
-                }else 
-                {
-                    key = text[count1] - 72; 
-                }
-            }
-        }else if (text[count1-1] - text[count1] == 12 && text[count1] - text[count1+1] + 26 == 3)
-        {
-            if (text[count1] >= 65 && text[count1] <= 90)
-            {
-                if (text[count1] - 72 < 0)
-                {
-                    key = text[count1] -72 + 26;
-                }else 
-                {
-                    key = text[count1] - 72; 
-                }
-            }else
-            {
-                text[count1] -= 32;
-                if (text[count1] - 72 < 0)
-                {
-                    key = text[count1] -72 + 26;
-                }else 
-                {
-                    key = text[count1] - 72; 
-                }
-            }
+            
         }
         
         
         count1++;
     } while (count1 < 2000);
-    printf("\n%i\n", key);
+    printf("\nKey = %i\n", key);
     
     /* Runs a loop subtracting the key from the value of the current text[count], and ensures the result will always
      * be within (including) 65 and 90 in the ASCII table. */
