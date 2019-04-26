@@ -528,7 +528,36 @@ void unknownRotateDecrypt()
                     key = text[count1] - 72; 
                 }
             }  
-        } 
+        }
+        
+        //The following searches for the keyword "and".
+        else if ((text[count1] - text[count1-1] == 13 && text[count1] - text[count1+1] == 10) ||
+            (text[count1] - text[count1-1] == 13 && text[count1] + 26 - text[count1+1] == 10) ||
+            (text[count1] + 26 - text[count1-1] == 13 && text[count1] - text[count1+1] == 10) ||
+            (text[count1] + 26 - text[count1-1] == 13 && text[count1] + 26 - text[count1+1] == 10))
+        {
+            if (text[count1] >= 65 && text[count1] <= 90)
+            {
+                if (text[count1] - 78 < 0)
+                {
+                    key = text[count1] -78 + 26;
+                }else 
+                {
+                    key = text[count1] - 78; 
+                }
+            }else
+            {
+                text[count1] -= 32;
+                if (text[count1] - 78 < 0)
+                {
+                    key = text[count1] -78 + 26;
+                }else 
+                {
+                    key = text[count1] - 78; 
+                }
+            }  
+        }
+        
         //The following searches for the keyword "to".
         else if ((text[count1-1] == 32 && text[count1+2] == 32) && ((text[count1] - text[count1+1] == 5) ||
                  (text[count1] + 26 - text[count1+1] == 5)))
@@ -554,6 +583,58 @@ void unknownRotateDecrypt()
                 }
             }
         }
+        //The following searches for the keyword "be".
+        else if ((text[count1-1] == 32 && text[count1+2] == 32) && ((text[count1+1] - text[count1] == 3) ||
+                 (text[count1+1] - text[count1] + 26 == 3)))
+        {
+            if (text[count1] >= 65 && text[count1] <= 90)
+            {
+                if (text[count1] - 66 < 0)
+                {
+                    key = text[count1] - 66 +26;
+                }else
+                {
+                    key = text[count1] - 66;
+                }
+            }else 
+            {
+                text[count1] -= 32;
+                if (text[count1] - 66 < 0)
+                {
+                    key = text[count1] - 66 +26;
+                }else
+                {
+                    key = text[count1] - 66;
+                }
+            }
+        }
+        //The following searches for the keyword "of".
+        else if ((text[count1-1] == 32 && text[count1+2] == 32) && ((text[count1] - text[count1+1] == 9) ||
+                 (text[count1] + 26 - text[count1+1] == 9)))
+        {
+            if (text[count1] >= 65 && text[count1] <= 90)
+            {
+                if (text[count1] - 79 < 0)
+                {
+                    key = text[count1] - 79 +26;
+                }else
+                {
+                    key = text[count1] - 79;
+                }
+            }else 
+            {
+                text[count1] -= 32;
+                if (text[count1] -79 < 0)
+                {
+                    key = text[count1] - 79 +26;
+                }else
+                {
+                    key = text[count1] - 79;
+                }
+            }
+        }
+        
+        
         
         
         count1++;
