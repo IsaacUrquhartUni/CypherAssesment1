@@ -30,15 +30,15 @@ void menu(void)
     char option = ' ';              //Sets / resets the variable option to a blank space (or 32 in ASCII).
 
     //Menu printed to screen: 
-    printf("############################################################\n");
-    printf("# Please select an option from the menu below:             #\n");
-    printf("#                                                          #\n");
-    printf("# (a) Rotation encryption      (b) Rotation decryption     #\n");
-    printf("# (c) Substitution encryption  (d) Substitution decryption #\n");
-    printf("# (e) Unknown rotation decryption                          #\n");
-    printf("# (f) Unknown substitution decryption                      #\n");
-    printf("#                                                          #\n");
-    printf("############################################################\n");
+    printf("#############################################################\n");
+    printf("# Please select an option from the menu below:              #\n");
+    printf("#                                                           #\n");
+    printf("# (a) Rotation encryption      (b) Rotation decryption      #\n");
+    printf("# (c) Substitution encryption  (d) Substitution decryption  #\n");
+    printf("# (e) Unknown rotation decryption                           #\n");
+    printf("# (f) Unknown substitution decryption (Not yet implemented) #\n");
+    printf("#                                                           #\n");
+    printf("#############################################################\n");
     
     scanf(" %c", &option); //Reads users input and assigns the variable to 'option'.
     
