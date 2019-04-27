@@ -362,7 +362,44 @@ void substitutionDecryption()
     printf("Please enter a 26 character alphabetical key:");
     scanf(" %[^\n]%*c", key);
     
-        
+    do 
+    {
+        if (text[count] >= 97 && text[count] <= 122)
+        {
+            text[count] -= 32;
+        }
+        count++;
+    } while (text[count] != 0);
+    
+    count = 0;
+    
+    do 
+    {
+        if (key[count] >= 97 && key[count] <= 122)
+        {
+            key[count] -= 32;
+        }
+        count++;
+    } while (key[count] != 0);
+    
+    count = 0;
+    
+    do
+    {
+        do
+        {
+            if (text[count] == key[counter])
+            {
+                text[count] = counter + 65;
+                break;
+            }
+            
+            counter++;
+        } while (key[counter] != 0);
+        count++;
+        counter = 0;
+    } while(text[count] != 0);
+    
     
     
     printf("Encoded text is: %s\n", text); //Prints decrypted text.
