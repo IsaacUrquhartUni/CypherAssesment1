@@ -209,14 +209,15 @@ void substitutionEncryption()
 {
     char text[2000]; //Encrypted text array with a max length of 2000 characters.
     int count = 0; //Counter variable for how many times 
+    char key[26];
     
     printf("Please enter text to be encrypted:\n");
     scanf(" %[^\n]%*c", text); /* The %[^\n] will ensure the input is read until right before a new line 
                                 * is encountered, then the %*c will read the new line character then discard
                                 * it afterward. */
     
-    //Plain Text: ABCDEFGHIJKLMNOPQRSTUVWXYZ
-    //Encrypted:  DTIOXZMQAWLRVUYSEGJFHBPNKC
+    printf("Please enter a 26 character alphabetical key:");
+    scanf(" %[^\n]%*c", key);
     
     /* This loop will make sure all characters are capital letters, otherwise it will convert them by subtracting
      * 32. Then it will run through and convert each letter to the coresponding substitution as outlined in the
@@ -230,106 +231,107 @@ void substitutionEncryption()
         switch (text[count])
         {
             case 65:
-                text[count] = 'D';
+                text[count] = key[0];
                 break;
             
             case 66:
-                text[count] = 'T';
+                text[count] = key[1];
                 break;
+                
             case 67:
-                text[count] = 'I';
+                text[count] = key[2];
                 break;
             
             case 68:
-                text[count] = 'O';
+                text[count] = key[3];
                 break;
             
             case 69:
-                text[count] = 'X';
+                text[count] = key[4];
                 break;
             
             case 70:
-                text[count] = 'Z';
+                text[count] = key[5];
                 break;
                 
             case 71:
-                text[count] = 'M';
+                text[count] = key[6];
                 break;
                 
             case 72:
-                text[count] = 'Q';
+                text[count] = key[7];
                 break;
                 
             case 73:
-                text[count] = 'A';
+                text[count] = key[8];
                 break;
                 
             case 74:
-                text[count] = 'W';
+                text[count] = key[9];
                 break;
                 
             case 75:
-                text[count] = 'L';
+                text[count] = key[10];
                 break;
                 
             case 76:
-                text[count] = 'R';
+                text[count] = key[11];
                 break;
                 
             case 77:
-                text[count] = 'V';
+                text[count] = key[12];
                 break;
                 
             case 78:
-                text[count] = 'U';
+                text[count] = key[13];
                 break;
                 
             case 79:
-                text[count] = 'Y';
+                text[count] = key[14];
                 break;
                 
             case 80:
-                text[count] = 'S';
+                text[count] = key[15];
                 break;
                 
             case 81:
-                text[count] = 'E';
+                text[count] = key[16];
                 break;
                 
             case 82:
-                text[count] = 'G';
+                text[count] = key[17];
                 break;
                 
             case 83:
-                text[count] = 'J';
+                text[count] = key[18];
                 break;
                 
             case 84:
-                text[count] = 'F';
+                text[count] = key[19];
                 break;
                 
             case 85:
-                text[count] = 'H';
+                text[count] = key[20];
                 break;
                 
             case 86:
-                text[count] = 'B';
+                text[count] = key[21];
                 break;
                 
             case 87:
-                text[count] = 'P';
+                text[count] = key[22];
                 break;
                 
             case 88:
-                text[count] = 'N';
+                text[count] = key[23];
                 break;
                 
             case 89:
-                text[count] = 'K';
+                text[count] = key[24];
                 break;
                 
             case 90:
-                text[count] = 'C';
+                text[count] = key[25];
                 break;
                 
             default:
@@ -348,138 +350,30 @@ void substitutionEncryption()
 void substitutionDecryption()
 {
     char text[2000]; //Encrypted text
+    char key[26];
+    
     int count = 0; //Counter variable for how many times
+    int counter = 0; //counter for inner loops
     
     printf("Please enter encrypted text to be decrypted:\n");
     scanf(" %[^\n]%*c", text); /*The %[^\n] will ensure the input is read until right before a new line 
                                 * is encountered, then the %*c will read the new line character then discard
                                 * it afterward. */
+    printf("Please enter a 26 character alphabetical key:");
+    scanf(" %[^\n]%*c", key);
     
-    //Plain Text: ABCDEFGHIJKLMNOPQRSTUVWXYZ
-    //Encrypted:  DTIOXZMQAWLRVUYSEGJFHBPNKC
-    
-    /* This loop will make sure all characters are capital letters, otherwise it will convert them by subtracting
-     * 32. Then it will run through and convert each letter to the coresponding substitution as outlined in the
-     * comment above. */
-    do
+    do 
     {
         if (text[count] >= 97 && text[count] <= 122)
         {
             text[count] -= 32;
         }
-        switch (text[count])
-        {
-            case 65:
-                text[count] = 'I';
-                break;
-            
-            case 66:
-                text[count] = 'V';
-                break;
-                
-            case 67:
-                text[count] = 'Z';
-                break;
-            
-            case 68:
-                text[count] = 'A';
-                break;
-            
-            case 69:
-                text[count] = 'Q';
-                break;
-            
-            case 70:
-                text[count] = 'T';
-                break;
-                
-            case 71:
-                text[count] = 'R';
-                break;
-                
-            case 72:
-                text[count] = 'U';
-                break;
-                
-            case 73:
-                text[count] = 'C';
-                break;
-                
-            case 74:
-                text[count] = 'S';
-                break;
-                
-            case 75:
-                text[count] = 'Y';
-                break;
-                
-            case 76:
-                text[count] = 'K';
-                break;
-                
-            case 77:
-                text[count] = 'G';
-                break;
-                
-            case 78:
-                text[count] = 'X';
-                break;
-                
-            case 79:
-                text[count] = 'D';
-                break;
-                
-            case 80:
-                text[count] = 'W';
-                break;
-                
-            case 81:
-                text[count] = 'H';
-                break;
-                
-            case 82:
-                text[count] = 'L';
-                break;
-                
-            case 83:
-                text[count] = 'P';
-                break;
-                
-            case 84:
-                text[count] = 'B';
-                break;
-                
-            case 85:
-                text[count] = 'N';
-                break;
-                
-            case 86:
-                text[count] = 'M';
-                break;
-                
-            case 87:
-                text[count] = 'J';
-                break;
-                
-            case 88:
-                text[count] = 'E';
-                break;
-                
-            case 89:
-                text[count] = 'O';
-                break;
-                
-            case 90:
-                text[count] = 'F';
-                break;
-                
-            default:
-                text[count] = text[count];
-                break;
-        }
-        count++; //Increases the counter before the loop ends.
-    } while (text[count] != 0); /* While the line has not finished with a null value 'char 0', the loop will
-                                 * keep running. */
+        count++;
+    } while (text[count] != 0);
+    count = 0;
+    
+    
+    
     
     printf("Encoded text is: %s\n", text); //Prints decrypted text.
 }
