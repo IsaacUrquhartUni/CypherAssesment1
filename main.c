@@ -209,7 +209,7 @@ void substitutionEncryption()
 {
     char text[2000]; //Encrypted text array with a max length of 2000 characters.
     int count = 0; //Counter variable for how many times 
-    char key[26];
+    char key[26]; //Char array to store the alphabetical key
     
     printf("Please enter text to be encrypted:\n");
     scanf(" %[^\n]%*c", text); /* The %[^\n] will ensure the input is read until right before a new line 
@@ -217,17 +217,18 @@ void substitutionEncryption()
                                 * it afterward. */
     
     printf("Please enter a 26 character alphabetical key:");
-    scanf(" %[^\n]%*c", key);
+    scanf(" %[^\n]%*c", key);  //Enters a 26 character length key into the 'key' array
     
-    /* This loop will make sure all characters are capital letters, otherwise it will convert them by subtracting
-     * 32. Then it will run through and convert each letter to the coresponding substitution as outlined in the
-     * comment above. */
+    
     do
     {
+        //The following if statement converts each character in the text to its capital form.
         if (text[count] >= 97 && text[count] <= 122)
         {
             text[count] -= 32;
         }
+        
+        //The switch statement assigns characters to their respective substitutions according to the position.
         switch (text[count])
         {
             case 65:
@@ -341,6 +342,19 @@ void substitutionEncryption()
         count++; //Increases the counter before the loop ends.
     } while (text[count] != 0); /* While the line has not finished with a null value 'char 0', the loop will
                                  * keep running. */
+    count = 0;
+    
+    do 
+    //Converts all characters in the text to uppercase.
+    {
+        if (text[count] >= 97 && text[count] <= 122)
+        {
+            text[count] -= 32;
+        }
+        count++;
+    } while (text[count] != 0);
+    
+    
     
     printf("Encoded text is: %s\n", text); //Prints encrypted text.
 }
@@ -353,16 +367,17 @@ void substitutionDecryption()
     char key[26];
     
     int count = 0; //Counter variable for how many times
-    int counter = 0; //counter for inner loops
+    int counter = 0; //counter for the inner loop
     
     printf("Please enter encrypted text to be decrypted:\n");
     scanf(" %[^\n]%*c", text); /*The %[^\n] will ensure the input is read until right before a new line 
                                 * is encountered, then the %*c will read the new line character then discard
                                 * it afterward. */
     printf("Please enter a 26 character alphabetical key:");
-    scanf(" %[^\n]%*c", key);
+    scanf(" %[^\n]%*c", key); //Used to enter the decryption key
     
     do 
+    //Converts all characters in the text to uppercase.
     {
         if (text[count] >= 97 && text[count] <= 122)
         {
@@ -374,6 +389,7 @@ void substitutionDecryption()
     count = 0;
     
     do 
+    //Converts all characters in the key to uppercase.
     {
         if (key[count] >= 97 && key[count] <= 122)
         {
@@ -384,10 +400,16 @@ void substitutionDecryption()
     
     count = 0;
     
+    
     do
+    //This loop will cycle through each character in the encrypted text.
     {
         do
+        //This loop will cycle through all the key characters performing swaps when required.
         {
+            /* If the current text character matches the current key character, the text character is swapped
+             * with the position value of the key character plus 65. This will set the text character to the
+             * current position of the key relative to the alphabet in the ASCII table. */
             if (text[count] == key[counter])
             {
                 text[count] = counter + 65;
