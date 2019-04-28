@@ -36,7 +36,6 @@ void menu(void)
     printf("# (a) Rotation encryption      (b) Rotation decryption      #\n");
     printf("# (c) Substitution encryption  (d) Substitution decryption  #\n");
     printf("# (e) Unknown rotation decryption                           #\n");
-    printf("# (f) Unknown substitution decryption (Not yet implemented) #\n");
     printf("#                                                           #\n");
     printf("#############################################################\n");
     
