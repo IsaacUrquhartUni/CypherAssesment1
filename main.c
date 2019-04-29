@@ -38,6 +38,10 @@ int main(void)
 
 //---------------------------------------------------------------------------------------------
 
+/* This menu function will print the menu to the output screen and allow the user to select which function they
+ * would like to run. The user will select an option by typing the corresponding letter within the braces next to
+ * the desired function name. */
+
 void menu(void)
 {
     void rotationEncryption();      //Declares rotationEncryption function.
