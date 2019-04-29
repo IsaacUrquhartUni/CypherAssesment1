@@ -391,6 +391,11 @@ void substitutionEncryption()
 
 //---------------------------------------------------------------------------------------------------------------
 
+/* Once this function is called it will ask the user for an encrypted text input, and after the user presses the
+ * enter key it will then ask for a 26 character key. The key then replaces the letters in the encrypted text
+ * with the relative alphabetical position of the corresponding letter in the key.*
+ * EG: encrypted text is ebtgd, the key is bgted..., then the decrypted text is dacbe. */
+
 void substitutionDecryption()
 {
     char text[2000] = " "; //Encrypted text
