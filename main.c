@@ -659,7 +659,7 @@ void unknownRotateDecrypt()
             text[count] += -key+26-32;
         }
         
-        //If the character is not a letter, it will not change its value.
+        //If the character is not a letter, it will not change its value. 
         else
         {
             text[count] = text[count];
