@@ -164,6 +164,10 @@ void rotationEncryption()
 
 //----------------------------------------------------------------------------------------------------
 
+/* Once this function is called it will ask the user for a text input, and after the user presses the enter key
+ * it will then ask for a key. The key will shift the value of each character down the desired amount until all
+ * the text is decrypted. */
+
 void rotationDecryption()
 {
     char eText[2000] = " "; //Encrypted text array with a max length of 2000 characters
