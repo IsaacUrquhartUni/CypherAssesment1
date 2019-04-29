@@ -464,6 +464,10 @@ void substitutionDecryption()
 
 //------------------------------------------------------------------------------------------------------------
 
+/* This function will search an inputed encrypted text for keywords and determine the key of the encryption by
+ * subtracting the encryption letter ASCII value from the original letter's ASCII value within the keyword. It
+ * will then decrypt the text the same way as the rotateDecrypt() function. */
+
 void unknownRotateDecrypt()
 {
     char text[2000] = " ";  //An array to store the line of text, has a max length of 2000 characters.
@@ -480,7 +484,8 @@ void unknownRotateDecrypt()
     
     do
     {
-        //The following searches for the keyword "the".
+        /* The following searches for the keyword "the" by searching for letters that have a gap between the
+         * encrypted t, h, and e that are the same as the gap between the true t, h, and e ASCII values. */
         if ((text[count1-1] - text[count1] == 12 && text[count1] - text[count1+1] == 3) ||
             (text[count1-1] - text[count1] == 12 && text[count1] - text[count1+1] + 26 == 3) ||
             (text[count1-1] - text[count1] + 26 == 12 && text[count1] - text[count1+1] == 3) ||
