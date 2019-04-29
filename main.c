@@ -230,6 +230,11 @@ void rotationDecryption()
 
 //--------------------------------------------------------------------------------------------------------------
 
+/* Once this function is called it will ask the user for a text input, and after the user presses the enter key
+ * it will then ask for a 26 character key. The key will replace any letter in the text with the corresponding 
+ * letter in the key via the position. EG: if the text is dacbe... and the key is bgted... the encrypted text 
+ * would be  ebtgd. */
+
 void substitutionEncryption()
 {
     char text[2000] = " "; //Encrypted text array with a max length of 2000 characters.
