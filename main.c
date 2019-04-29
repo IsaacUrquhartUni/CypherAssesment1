@@ -13,6 +13,11 @@
  * Credit:              Site used to find the most common english words: https://en.wikipedia.org/wiki/Most_common_words_in_English#100_most_common_words
  *                      Site used to figure out how to input an entire line of text with spaces using scanf(); :https://www.geeksforgeeks.org/taking-string-input-space-c-3-different-methods/
  */
+
+/* This main function will run the program once, then ask the user if they would like to quit the program. The
+ * user will respond with a 1 for yes, or a 2 for no.
+ */
+
 int main(void) 
 {
     
