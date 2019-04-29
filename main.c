@@ -491,6 +491,8 @@ void unknownRotateDecrypt()
             (text[count1-1] - text[count1] + 26 == 12 && text[count1] - text[count1+1] == 3) ||
             (text[count1-1] - text[count1] + 26 == 12 && text[count1] - text[count1+1] + 26 == 3))
         {
+            //72 is the ASCII value for H. These if statements find the key by subtracting the value of H from the
+            //encrypted text. If this value falls below 0, then the program adds 26 (letters of the alphabet)
             if (text[count1] >= 65 && text[count1] <= 90)
             {
                 if (text[count1] - 72 < 0)
