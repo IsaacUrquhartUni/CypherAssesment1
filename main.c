@@ -504,7 +504,7 @@ void unknownRotateDecrypt()
                 }
             }else
             {
-                text[count1] -= 32;
+                text[count1] -= 32; //Converts the character to a capital letter and runs the same process as above.
                 if (text[count1] - 72 < 0)
                 {
                     key = text[count1] -72 + 26;
