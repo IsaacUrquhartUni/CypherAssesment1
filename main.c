@@ -6,9 +6,12 @@
  *                      strings of text using a user generated key, and decrypting of rotation cypher texts
  *                      without a key by searching for key words.
  *
+ * User Interface:      The user will navigate the program by following the on screen instructions and
+ *                      entering text, characters and integers where prompted. The output in the terminal
+ *                      will inform the user how to procede.
  *
- *
- *
+ * Credit:              Site used to find the most common english words: https://en.wikipedia.org/wiki/Most_common_words_in_English#100_most_common_words
+ *                      Site used to figure out how to input an entire line of text with spaces using scanf(); :https://www.geeksforgeeks.org/taking-string-input-space-c-3-different-methods/
  */
 int main(void) 
 {
