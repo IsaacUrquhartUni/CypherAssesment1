@@ -1,5 +1,15 @@
 #include<stdio.h>
-
+/* Author:              Isaac Urquhart
+ * Student Number:      3305917
+ * 
+ * Function of program: This program will allow the user to encrypt and decrypt rotation & substitution cypher
+ *                      strings of text using a user generated key, and decrypting of rotation cypher texts
+ *                      without a key by searching for key words.
+ *
+ *
+ *
+ *
+ */
 int main(void) 
 {
     
